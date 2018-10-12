@@ -7,7 +7,7 @@ import './App.css';
   constructor( props ){
    
     super( props );
-    
+    this.state = {ontoggle : false}
     this.state = {showFirst : true }
     this.state = {show2 : true }
     this.state = {show3 : true }
@@ -58,6 +58,10 @@ import './App.css';
     this.state = {show48 : true }
     this.state = {show49 : true }
     this.state = {show50 : true }
+  }
+   
+  toggle = () => {
+    this.setState({ontoggle :!this.state.ontoggle})
   }
 
   numFirstOperation(){
@@ -307,7 +311,7 @@ import './App.css';
       var trueSeven=[]
        var sevenNumber = Array.find(function(elem){
          if (elem==true) { trueSeven.push(elem); 
-          if (trueSeven.length==5){ document.getElementById("game").style.pointerEvents ="none"; 
+          if (trueSeven.length==5){ document.getElementById("board").style.pointerEvents ="none"; 
            document.getElementById("btn").style.display = ""
           }
          }
@@ -326,6 +330,8 @@ import './App.css';
        
         <br/>
         <img src={theimg}/>
+        <div>{this.state.ontoggle && (<h1>Kostet 1 Euro Gehe zur Lotto Seite <small><a href="https://www.lotto.de/lotto-6aus49/spielen" >Klick hier</a></small> </h1>)}</div>
+        
         <br/>
         <div id="board" >
         
@@ -382,10 +388,10 @@ import './App.css';
 
 
         </div>
-
+               
         <br/>
-        
-                <button style={{display : "none"}} className="button" id="btn"><span> Weiter </span></button>
+                       <div onClick={this.toggle} >   
+                <button  style={{display : "none"}} className="button" id="btn" href="https://www.lotto.de/">Weiter</button></div> 
                 
        </div>
     
